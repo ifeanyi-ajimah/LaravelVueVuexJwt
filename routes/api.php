@@ -19,10 +19,7 @@ use Illuminate\Http\Request;
 
 
 
-Route::group([
-    // 'middleware' => 'api',
-    'prefix' => 'auth'
-], function ($router) {
+Route::group([ 'middleware' => 'api','prefix' => 'auth'], function ($router) {
 
     Route::post('login', 'AuthController@login');
     Route::post('logout', 'AuthController@logout');
@@ -30,3 +27,16 @@ Route::group([
     Route::post('me', 'AuthController@me');
 
 });
+
+
+
+
+Route::group([ 'middleware' => 'jwt.auth'], function ($router) {
+
+    Route::get('customers','CustomerController@index');
+    Route::get('customers/{id}','CustomerController@show');
+    Route::get('customers/store','CustomerController@store');
+
+});
+
+

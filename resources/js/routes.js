@@ -20,13 +20,13 @@ export const routes = [
     { path: '/about', component: About },
     // { path: '/head', component: Myheader },
     {path: '/login', component: Login},
-    {path: '/customers', component: CustomersList,
+    {path: '/customers', component: CustomerMain,
      meta:{
          requiresAuth: true
      },
      children: [
         {path: '/', component: CustomersList},
-        {path: '/new', component: NewCustomer},
+        {path: 'new', component: NewCustomer},
         {path: ':id', component: Customer}
      ]
     },

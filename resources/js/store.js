@@ -1,4 +1,5 @@
 import { getLocalUser } from "./helpers/auth";
+import Axios from "axios";
 
 
 const user = getLocalUser();
@@ -9,7 +10,7 @@ export default {
         isLoggedIn : !!user,  //double exclamation since we are ll be casting user to boolean.
         loading: false,
         auth_error: null,
-        customers: [],
+        customers: {},
 
 
     },
@@ -53,12 +54,27 @@ export default {
             localStorage.removeItem("user");
             state.isLoggedIn = false;
             state.currentUser = null;
+        },
+        updateCustomers(state, payload){
+            state.customers = payload;
         }
+
     },
-    
+
     actions: {
         login(context){
             context.commit("login");
+        },
+        
+        getCustomers(context){
+            axios.get('api/customers',{
+                headers:{
+                    "Authorization" : `Bearer ${context.state.currentUser.token}`
+                }
+            })
+            .then( (response) => {
+                context.commit('updateCustomers', response.data.customers );
+            })
         }
     },
 };

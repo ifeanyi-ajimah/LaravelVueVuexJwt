@@ -14,7 +14,10 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $customers = Customer::all();
+        return response()->json([
+            "customers" => $customers
+        ], 200);
     }
 
     /**
@@ -35,7 +38,10 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customer = Customer::create($request->only(["name", "email", "phone", "website"]));
+        return response()->json([
+            "customer" => $customer
+        ],200);
     }
 
     /**
@@ -44,9 +50,12 @@ class CustomerController extends Controller
      * @param  \App\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show( $customer)
     {
-        //
+        $customer = Customer::find($customer);
+        return response()->json([
+            "customer" => $customer
+        ],200);
     }
 
     /**
