@@ -18,7 +18,7 @@ export const routes = [
     }
     },
     { path: '/about', component: About },
-    // { path: '/head', component: Myheader },
+        // { path: '/head', component: Myheader },
     {path: '/login', component: Login},
     {path: '/customers', component: CustomerMain,
      meta:{
@@ -27,7 +27,7 @@ export const routes = [
      children: [
         {path: '/', component: CustomersList},
         {path: 'new', component: NewCustomer},
-        {path: ':id', component: Customer}
+        {path: ':customer_id', component: Customer}
      ]
     },
     {path: '*', component: Notfound}

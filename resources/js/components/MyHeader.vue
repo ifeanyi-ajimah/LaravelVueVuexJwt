@@ -18,9 +18,7 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Pricing</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
+     
       <template v-if="!currentUser">
         <li class="nav-item ">
         <router-link  to="login" class="nav-link " >Login</router-link>

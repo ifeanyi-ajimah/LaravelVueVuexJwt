@@ -35,7 +35,7 @@ Route::group([ 'middleware' => 'jwt.auth'], function ($router) {
 
     Route::get('customers','CustomerController@index');
     Route::get('customers/{id}','CustomerController@show');
-    Route::get('customers/store','CustomerController@store');
+    Route::post('customers/store','CustomerController@store');
 
 });
 

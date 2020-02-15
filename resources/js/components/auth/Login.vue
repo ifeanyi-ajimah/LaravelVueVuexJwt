@@ -5,6 +5,13 @@
                 <div class="card-header"> Login </div>
                 <div class="card-body">
                     <form @submit.prevent="authenticate">
+
+                        <div class="form-group " v-if="authError">
+                            <p class="error">
+                                {{ authError }}
+                            </p>
+                        </div>
+
                         <div class="form-group ">
                             <label for="email"> Email </label> <br>
                             <input type="email" v-model="form.email" placeholder="email address">
@@ -19,11 +26,6 @@
                             <input type="submit" value="login">
                         </div>
 
-                         <div class="form-group " v-if="authError">
-                            <p class="error">
-                                {{ authError }}
-                            </p>
-                        </div>
 
                     </form>
                 </div>
@@ -73,6 +75,7 @@ export default {
 <style scoped >
 .error{
     text-align: center;
-    color: red;
+    color: white;
+    background-color: red;
 }
 </style>
