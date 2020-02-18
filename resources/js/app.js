@@ -4,12 +4,19 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+window.Fire = new Vue(); //initialize a fire event so we can use it anywhere in the application. 
+
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import {routes} from './routes'
 import StoreData from './store'
 import {initialize} from './helpers/general';
+
+// register jw pagination component globally
+import JwPagination from 'jw-vue-pagination';
+Vue.component('jw-pagination', JwPagination);
+
 
 Vue.use(VueRouter);
 Vue.use(Vuex);

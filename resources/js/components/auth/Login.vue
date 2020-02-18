@@ -6,7 +6,7 @@
                 <div class="card-body">
                     <form @submit.prevent="authenticate">
 
-                        <div class="form-group " v-if="authError">
+                         <div class="form-group " v-if="authError">
                             <p class="error">
                                 {{ authError }}
                             </p>

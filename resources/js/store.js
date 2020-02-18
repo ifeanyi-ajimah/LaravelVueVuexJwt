@@ -65,7 +65,7 @@ export default {
         login(context){
             context.commit("login");
         },
-        
+
         getCustomers(context){
             axios.get('api/customers',{
                 headers:{

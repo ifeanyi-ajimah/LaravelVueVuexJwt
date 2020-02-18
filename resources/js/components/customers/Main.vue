@@ -17,7 +17,7 @@
 
 <script>
 export default {
-    name: 'customers-main'
+    // name: 'customers-main'
 }
 </script>
 

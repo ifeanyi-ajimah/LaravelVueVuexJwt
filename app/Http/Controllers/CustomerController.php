@@ -15,6 +15,7 @@ class CustomerController extends Controller
     public function index()
     {
         $customers = Customer::all();
+
         return response()->json([
             "customers" => $customers
         ], 200);
@@ -43,6 +44,24 @@ class CustomerController extends Controller
             "customer" => $customer
         ],200);
     }
+
+    public function search()
+    {
+        if($search = \Request::get('q')){
+            $customers = Customer::where(function($query) use ($search) {
+                $query->where('name', 'LIKE', "%$search%" )
+                ->orWhere('email', 'LIKE', "%$search%")
+                ->orWhere('phone', 'LIKE', "%$search%")
+                ->orWhere('website', 'LIKE', "%$search%");
+            })->get();
+        }else{
+            $customers = Customer::paginate(10);
+        }
+        // return $customers;
+        return response()->json(["customers" => $customers], 200);
+    }
+
+
 
     /**
      * Display the specified resource.

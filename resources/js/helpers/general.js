@@ -13,6 +13,7 @@ router.beforeEach((to, from, next) => {
     }
 });
 
+
 axios.interceptors.response.use(null,  (error)=>{
     if(error.response.status == 401){
         store.commit('logout');
@@ -20,5 +21,8 @@ axios.interceptors.response.use(null,  (error)=>{
     }
     return Promise.reject(error);
 });
+
+
+// axios.defaults.headers.common["Authorization"] = `Bearer ${store.getters.currentUser.token}`
 
 }
