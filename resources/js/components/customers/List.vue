@@ -21,7 +21,7 @@
                 </template>
                 <template v-else>
                     <tr v-for="customer in paginationData" :key="customer.id" >
-                        <td>{{ customer.name }}</td>
+                        <td>{{ customer.name | to-uppercase }}</td>
                         <td>{{ customer.email }}</td>
                         <td>{{ customer.phone }}</td>
                         <td>
@@ -102,7 +102,13 @@ export default {
 
         },
 
-    }
+    },
+
+     filters:{
+        'to-uppercase':function(value){
+            return value.toUpperCase();
+        }
+       },
 
 }
 </script>

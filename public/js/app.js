@@ -2426,6 +2426,11 @@ __webpack_require__.r(__webpack_exports__);
         Fire.$emit('searching');
       }, 2000);
     }
+  },
+  filters: {
+    'to-uppercase': function toUppercase(value) {
+      return value.toUpperCase();
+    }
   }
 });
 
@@ -42021,7 +42026,9 @@ var render = function() {
               ? [_vm._m(1)]
               : _vm._l(_vm.paginationData, function(customer) {
                   return _c("tr", { key: customer.id }, [
-                    _c("td", [_vm._v(_vm._s(customer.name))]),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm._f("to-uppercase")(customer.name)))
+                    ]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(customer.email))]),
                     _vm._v(" "),
@@ -58483,7 +58490,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-window.Fire = new vue__WEBPACK_IMPORTED_MODULE_0___default.a(); //initialize a fire event so we can use it anywhere in the application. 
+window.Fire = new vue__WEBPACK_IMPORTED_MODULE_0___default.a(); //initialize a fire event so we can use it anywhere in the application.
 
 
 
@@ -58504,7 +58511,15 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_2__["default"].Store(_store__WEBPA
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('my-header', _components_MyHeader_vue__WEBPACK_IMPORTED_MODULE_7__["default"]);
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('footers', _components_Footer_vue__WEBPACK_IMPORTED_MODULE_8__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('footers', _components_Footer_vue__WEBPACK_IMPORTED_MODULE_8__["default"]); //global filters created
+// Vue.filter('to-uppercase',function(value)
+// {
+//  return value.charAt(0).toUpperCase() + value.slice(1)
+// });
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.filter('my-date', function (created) {
+  return moment(created).format('MMMM Do YYYY, h:mm:ss a');
+});
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   routes: _routes__WEBPACK_IMPORTED_MODULE_3__["routes"]

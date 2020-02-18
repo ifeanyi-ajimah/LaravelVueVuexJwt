@@ -4,7 +4,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-window.Fire = new Vue(); //initialize a fire event so we can use it anywhere in the application. 
+window.Fire = new Vue(); //initialize a fire event so we can use it anywhere in the application.
 
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -37,6 +37,15 @@ Vue.component('my-header', Myheader);
 import Myfooter from './components/Footer.vue';
 Vue.component('footers', Myfooter);
 
+
+//global filters created
+// Vue.filter('to-uppercase',function(value)
+// {
+//  return value.charAt(0).toUpperCase() + value.slice(1)
+// });
+Vue.filter('my-date', function(created){
+    return moment(created).format('MMMM Do YYYY, h:mm:ss a');
+  });
 
 const router  = new VueRouter({
     mode:'history',
